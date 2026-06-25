@@ -1,8 +1,8 @@
 const giftCards = document.querySelectorAll(".gift-card");
 const choicePanel = document.querySelector("#choice-panel");
 const choiceTitle = document.querySelector("#choice-title");
-const choiceText = document.querySelector("#choice-text");
 const choiceList = document.querySelector("#choice-list");
+const resetButton = document.querySelector("#reset-button");
 const sendButton = document.querySelector("#send-button");
 const pointsLeft = document.querySelector("#points-left");
 const pointsHint = document.querySelector("#points-hint");
@@ -43,8 +43,7 @@ function renderSelection() {
   if (selectedGifts.length === 0) {
     choicePanel.classList.remove("active");
     choiceTitle.textContent = "Пока ничего не выбрано";
-    choiceText.textContent =
-      "Выбирай один подарок или несколько маленьких, пока хватает очков.";
+    resetButton.disabled = true;
     sendButton.disabled = true;
     selectedGiftsField.value = "";
     pointsUsedField.value = "";
@@ -55,8 +54,6 @@ function renderSelection() {
 
   choicePanel.classList.add("active");
   choiceTitle.textContent = `Выбрано подарков: ${selectedGifts.length}`;
-  choiceText.textContent =
-    "Выбор сохранен. Можно собрать набор мечты в рамках бюджета, что подозрительно напоминает взрослую жизнь, только здесь приятно.";
 
   selectedGifts.forEach((gift) => {
     const pill = document.createElement("div");
@@ -65,6 +62,7 @@ function renderSelection() {
     choiceList.append(pill);
   });
 
+  resetButton.disabled = false;
   sendButton.disabled = false;
   selectedGiftsField.value = selectedGifts
     .map((gift) => `${gift.name} (${gift.cost} очк.)`)
@@ -96,12 +94,21 @@ function toggleSelection(card) {
   renderSelection();
 }
 
+function resetSelection() {
+  selectedGifts = [];
+  renderSelection();
+}
+
 giftCards.forEach((card) => {
   const button = card.querySelector(".gift-button");
 
   button.addEventListener("click", () => {
     toggleSelection(card);
   });
+});
+
+resetButton.addEventListener("click", () => {
+  resetSelection();
 });
 
 const savedChoice = localStorage.getItem(storageKey);
