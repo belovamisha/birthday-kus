@@ -139,6 +139,7 @@ h1 {
 
 .hero-link,
 .gift-button,
+.reset-button,
 .send-button {
   border: 0;
   border-radius: 999px;
@@ -162,6 +163,8 @@ h1 {
 .hero-link:focus-visible,
 .gift-button:hover,
 .gift-button:focus-visible,
+.reset-button:hover,
+.reset-button:focus-visible,
 .send-button:hover,
 .send-button:focus-visible {
   transform: translateY(-2px);
@@ -291,7 +294,7 @@ main {
 }
 
 .gift-button,
-.copy-button,
+.reset-button,
 .send-button {
   justify-self: start;
   padding: 12px 18px;
@@ -311,6 +314,13 @@ main {
 }
 
 .gift-button[disabled] {
+  cursor: not-allowed;
+  opacity: 0.45;
+  transform: none;
+  box-shadow: none;
+}
+
+.reset-button[disabled] {
   cursor: not-allowed;
   opacity: 0.45;
   transform: none;
@@ -344,6 +354,10 @@ main {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+}
+
+.reset-button {
+  background: linear-gradient(135deg, #90a3b7, #6e8399);
 }
 
 .send-button {
@@ -413,6 +427,7 @@ main {
 
   .hero-link,
   .gift-button,
+  .reset-button,
   .send-button {
     width: 100%;
   }
