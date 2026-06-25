@@ -69,8 +69,8 @@
               <h3>Новенький телевизор</h3>
               <p class="gift-cost">Стоимость: 3 очка</p>
               <p>
-                Большой и красивый, чтобы мы вместе смотрели "Марсианина" раз в
-                десять и каждый раз как в первый.
+                Большой и красивый, чтобы мы вместе посмотрели "Марсианина" в
+                сотый раз.
               </p>
               <button class="gift-button" type="button">
                 Выбрать подарок
@@ -214,9 +214,6 @@
         <section class="choice-panel" id="choice-panel">
           <p class="section-label">Твой выбор</p>
           <h2 id="choice-title">Пока ничего не выбрано</h2>
-          <p id="choice-text">
-            Выбирай один подарок или несколько маленьких, пока хватает очков.
-          </p>
           <div class="choice-list" id="choice-list"></div>
           <form
             class="submit-form"
@@ -241,6 +238,9 @@
             <input type="hidden" name="points_left" id="points-left-field" />
 
             <div class="choice-actions">
+              <button class="reset-button" type="button" id="reset-button" disabled>
+                Сбросить выбор
+              </button>
               <button class="send-button" type="submit" id="send-button" disabled>
                 Отправить выбор
               </button>
